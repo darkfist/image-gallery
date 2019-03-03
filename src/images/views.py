@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 
@@ -6,16 +7,22 @@ from .models import Image
 from .forms import AddImage
 
 
+@login_required(login_url='/login/')
 def add_images(request):
 	form = AddImage(request.POST or None, request.FILES or None)
 	errors = None
 	if form.is_valid():
-		obj = Image.objects.create(
-				title = form.cleaned_data.get('title'), 
-				description = form.cleaned_data.get('description'),
-				img_url = form.cleaned_data.get('image')
-			)
-		return HttpResponseRedirect('/view-images/')
+		if request.user.is_authenticated():
+			obj = Image.objects.create(
+					title = form.cleaned_data.get('title'), 
+					description = form.cleaned_data.get('description'),
+					img_url = form.cleaned_data.get('image'),
+					uploaded_by = request.user
+				)
+			return HttpResponseRedirect('/view-images/')
+		else:
+			return HttpResponseRedirect('/view-images/')
+			
 	if form.errors:
 		errors = form.errors
 

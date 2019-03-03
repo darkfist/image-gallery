@@ -26,7 +26,7 @@
 							<figcaption>
 								<h2>{{ obj.title }}</h2>
 								<p>Branding, Design</p>
-								<a href="/image-details/{{ obj.slug }}" data-toggle="modal" data-target="#Modal-1">View more</a>
+								<a href="{% url 'details' slug=obj.slug %}" data-toggle="modal" data-target="#Modal-1">View more</a>
 							</figcaption>
 						</figure>
 					</div>
@@ -133,7 +133,5 @@
 			</div>
 			<!-- /.container -->
 		</section>
-
-
 
 {% endblock content %}
