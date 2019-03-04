@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 x+)JMU045d040031QˆÏÌË,‰×+¨dhÙ¶ëðõÍª‘Z
 =======
+=======
+>>>>>>> parent of 2122c2c... temp. commit
 /*------------------------------------------------------------------
 
 Project:	Treviso - One page multi purpose page
@@ -20,9 +23,15 @@ Import Google Fonts
 1. General
 --------------------*/
 
+<<<<<<< HEAD
 body {
 	margin: 0px;
 	font-family: "Raleway", Sans-serif;
+=======
+html, body {
+    margin: 0px;
+    font-family: "Raleway", Sans-serif;
+>>>>>>> parent of 2122c2c... temp. commit
 }
 
 h1,
@@ -509,6 +518,13 @@ section#contact .form-group input, section#contact .form-group textarea {
 5. Footer
 --------------------*/
 
+<<<<<<< HEAD
+=======
+.allButFooter{
+    min-height: calc(100vh - 95px); 
+} 
+
+>>>>>>> parent of 2122c2c... temp. commit
 footer {
     padding: 30px;
     background-color: #000;    
@@ -672,4 +688,7 @@ and (max-width : 480px) {
     font-size: 20px;
 }
 }
+<<<<<<< HEAD
 >>>>>>> parent of 41b26ef... minor adjustments to the UI
+=======
+>>>>>>> parent of 2122c2c... temp. commit
