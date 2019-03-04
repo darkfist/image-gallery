@@ -8,8 +8,48 @@
 {{ errors }}
 {% endif %}
 <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
-	{{ form.as_p }}
+	  <div class="add_form">
+	    <div><input type="text" name="title"></div>
+	    <div><input type="text" name="description"></div>
+	    <div><input type="file" name="image"></div>
+	    <button class="add_image">Add More Fields</button>
+     </div>
 	<button type="submit">Upload</button>
 </form>
 
 {% endblock content %}
+
+
+{% block JS %}
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		
+	
+	<script>
+	$(document).ready(function() {
+	 var x = 2;
+	   $('.add_image').click(function(e){ 
+	        e.preventDefault();
+	 		if(x <= 10){
+	        $('.add_form').append('<div><input type="file" id="extra" name="image"><a href="#" class="remove_field">Remove</a></div>'); 
+	        document.getElementById("extra").name = 'image' + x;
+	        document.getElementById("extra").id = 'img';
+	        x++;
+		}
+		else if (x == 11){
+	 		$('.add_form').append('<p>You can only add 10 images at a time</p>'); 
+	        x++;
+	    }
+	});
+	   
+    $('.add_form').on("click",".remove_field", function(e){ 
+		e.preventDefault(); 
+		$(this).parent('div').remove();
+		x--;		
+    })
+});
+	
+	</script>
+
+{% endblock JS %}

@@ -17,9 +17,9 @@ Import Google Fonts
 1. General
 --------------------*/
 
-body {
-	margin: 0px;
-	font-family: "Raleway", Sans-serif;
+html, body {
+    margin: 0px;
+    font-family: "Raleway", Sans-serif;
 }
 
 h1,
@@ -505,6 +505,10 @@ section#contact .form-group input, section#contact .form-group textarea {
 /*--------------------
 5. Footer
 --------------------*/
+
+.allButFooter{
+    min-height: calc(100vh - 95px); 
+} 
 
 footer {
     padding: 30px;

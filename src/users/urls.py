@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-from django.conf.urls import url
-
-from .views import display_images, add_images, image_details
-
-
-urlpatterns = [
-    url(r'^view-images/$', display_images, name='view'),
-    url(r'^image-details/(?P<slug>[\w-]+)/$', image_details, name='details'),
-    url(r'^add/$', add_images, name='add'),
-] 
-=======
 from django.conf.urls import url, include
 from django.contrib.auth.views import LoginView, LogoutView
 
@@ -21,4 +9,3 @@ urlpatterns = [
     url(r'^login/$', LoginView.as_view(template_name='users/login.html', redirect_authenticated_user=True), name='login'),
     url(r'^logout/$', LogoutView.as_view(template_name='users/logout.html'), name='logout'),
 ]
->>>>>>> parent of 2122c2c... temp. commit

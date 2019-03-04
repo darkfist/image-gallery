@@ -13,15 +13,18 @@ def add_images(request):
 	errors = None
 	if form.is_valid():
 		if request.user.is_authenticated():
+			all_img_url = str(form.cleaned_data.get('image'))
+			for i in range(2,11):
+				extra = 'image' + str(i)
+				if (str(form.cleaned_data.get(extra)) != 'None'):
+					all_img_url = all_img_url + " " + str(form.cleaned_data.get(extra))
 			obj = Image.objects.create(
 					title = form.cleaned_data.get('title'), 
 					description = form.cleaned_data.get('description'),
-					img_url = form.cleaned_data.get('image'),
+					img_url = all_img_url,
 					uploaded_by = request.user
 				)
-			return HttpResponseRedirect('/view-images/')
-		else:
-			return HttpResponseRedirect('/view-images/')
+			return HttpResponseRedirect('/images/view-images/')
 			
 	if form.errors:
 		errors = form.errors
@@ -32,7 +35,13 @@ def add_images(request):
 
 def display_images(request):
 	template_name = 'images/display_images.html'
-	queryset = Image.objects.all()
+	queryset = Image.objects.all().order_by('-pk')
+	context = {"object_list": queryset}
+	return render(request, template_name, context)
+
+def user_images(request):
+	template_name = 'images/user_images.html'
+	queryset = Image.objects.filter(uploaded_by=request.user).order_by('-pk')
 	context = {"object_list": queryset}
 	return render(request, template_name, context)
 

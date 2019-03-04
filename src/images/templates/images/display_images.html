@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load apptags %}
 
 {% block content %}
 
@@ -19,10 +20,12 @@
 			<div class="row row-0-gutter">
 				<!-- start portfolio item -->
 				{% for obj in object_list %}
+				{% with obj.img_url.url|split:"%20" as image_url %}
+				        {% for url in image_url %}
 				<div class="col-md-6 col-0-gutter">
 					<div class="ot-portfolio-item">
 						<figure class="effect-bubba">
-							<img src="{{ obj.img_url.url }}" alt="img02" class="img-responsive" />
+							<img src="/media/{{ url|rem }}" alt="img02" class="img-responsive" />
 							<figcaption>
 								<h2>{{ obj.title }}</h2>
 								<p>Branding, Design</p>
@@ -32,6 +35,8 @@
 					</div>
 				</div>
 				<!-- end portfolio item -->
+				{% endfor %}
+				{% endwith %}
 				{% endfor %}
 			</div>
 
