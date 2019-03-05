@@ -10,7 +10,7 @@ User = settings.AUTH_USER_MODEL
 class Image(models.Model):
 	uploaded_by	= models.ForeignKey(User)
 	title 		= models.CharField(max_length=120, null=False, blank=False)
-	description = models.CharField(max_length=120, null=True, blank=True)
+	description = models.TextField(null=True, blank=True)
 	img_url 	= models.ImageField(null=True, blank=True)
 	timestamp	= models.DateTimeField(auto_now_add=True)
 	updated		= models.DateTimeField(auto_now=True)
