@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% load apptags %}
 
 {% block content %}
 
@@ -16,15 +15,15 @@
 		</div>
 	</div>
 	<br>
-	{% with object.img_url.url|split:"%20" as image_url %}
-		{% for url in image_url %}
+	{% for img in image_list %}
+			{% if img.image_id == object.id %}
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
-					<img src="/media/{{ url|rem }}" alt="img02" class="img-responsive" /><br><br>
+					<img src="/media/{{ img.image_url }}" alt="img02" class="img-responsive" /><br><br>
 				</div>	
 			</div>
-		{% endfor %}
-	{% endwith %}
+		{% endif %}
+	{% endfor %}
 </div>
 
 
