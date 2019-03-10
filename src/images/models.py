@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.db import models
-from django.db.models.signals import pre_save, post_save
+from django.db.models.signals import pre_save
 
 
 from .utils import unique_slug_generator
@@ -27,6 +27,7 @@ class Image(models.Model):
 	def __str__(self):
 		return self.title
 
+# using pre_save form generating unique slugs for image before saving it to the database
 def image_pre_save_signal(sender, instance, *args, **kwargs):
 	if not instance.slug:
 		instance.slug = unique_slug_generator(instance)
