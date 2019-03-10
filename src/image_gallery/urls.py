@@ -4,7 +4,6 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
 
-from images.views import display_images, add_images, image_details
 
 urlpatterns = [
     url(r'^', include('images.urls')),
