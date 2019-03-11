@@ -6,7 +6,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 
 urlpatterns = [
-    url(r'^', include('images.urls')),
+    url(r'^', include('images.urls', namespace='images')),
     url(r'^users/', include('users.urls')),
     url(r'^admin/', admin.site.urls),
 ]
