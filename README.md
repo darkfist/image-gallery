@@ -1,6 +1,7 @@
+[![Python](https://img.shields.io/badge/Python-3.6-brightgreen.svg)](http://www.python.org/download/)
 # Django Image Gallery
 
-A simple Image Gallery made with Python and Djnago.
+A simple Image Gallery made with Python and Django.
 
 ## Description
 
