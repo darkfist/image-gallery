@@ -6,25 +6,17 @@ from .models import Image, ImageUpload
 from .forms import AddImage
 
 
-@login_required(login_url='/login/')
+@login_required()
 def add_images(request):
 	form = AddImage(request.POST or None, request.FILES or None)
 	errors = None
 	if form.is_valid():
 		if request.user.is_authenticated():
 
-			# looping through all image fields and saving it's name in a single string
-			all_img_url = str(form.cleaned_data.get('image'))
-			for i in range(2,11):
-				extra = 'image' + str(i)
-				if (str(form.cleaned_data.get(extra)) != 'None'):
-					all_img_url = all_img_url + " " + str(form.cleaned_data.get(extra))
-
 			# saving the details in the db
 			obj = Image.objects.create(
 					title = form.cleaned_data.get('title'), 
 					description = form.cleaned_data.get('description'),
-					img_url = all_img_url,
 					uploaded_by = request.user
 				)
 
@@ -68,7 +60,7 @@ def display_images(request):
 	return render(request, template_name, context)
 
 
-@login_required(login_url='/login/')
+@login_required()
 def user_images(request):
 	template_name = 'images/user_images.html'
 
@@ -80,6 +72,7 @@ def user_images(request):
 
 	context = {"object_list": queryset1, "image_list":queryset2}
 	return render(request, template_name, context)
+
 
 
 def image_details(request, slug):
@@ -94,7 +87,7 @@ def image_details(request, slug):
 	context = {"object": obj, "image_list":queryset}
 	return render(request, template_name, context)
 
-
+@login_required()
 def delete_image(request, pk):
 	# querying Image table from db to get single row and deleting it
 	instance1 = get_object_or_404(Image, pk=pk).delete()
