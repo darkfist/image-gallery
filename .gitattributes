@@ -15,4 +15,5 @@
 *.pyd		binary
 *.pyo 		binary
 
+# Reclassifies `.js` files as Python
 *.js linguist-language=Python
