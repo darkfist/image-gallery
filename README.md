@@ -14,7 +14,7 @@ After cloning the repository on your machine move into the ```src\``` directory 
 
 
 ##### Connecting to database:
-This application requires MySQL Database.
+This application requires MySQL Database. Check [this link](https://goo.gl/85wAeM) if you don't know how to install MySQL.
 Create a database with name "imagesDB" and set the MySQL username and password in the ```base.py``` file present at ```src\image_gallery\settings```.
 
 ## Starting the App
