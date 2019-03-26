@@ -8,6 +8,10 @@ A simple Image Gallery made with Python and Django.
 Django Image Gallery is a platform where users can register and then upload their images. These images can be viewed by anyone.
 Accepted Image Formats : JPEG, JPG, PNG, GIF
 
+## Demo Video
+
+You can watch the demo and explanatory video for this project on Youtube [here](https://youtu.be/byzqgbcxak4).
+
 ## Installation and Dependencies
 
 After cloning the repository on your machine move into the ```src\``` directory and install the dependencies by ```pip install -r requirements.txt```
